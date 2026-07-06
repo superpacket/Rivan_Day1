@@ -1,5 +1,5 @@
 
-<!-- Your monitor number = #$34T# -->
+<!-- Your monitor number = 42 -->
 
 # 👋 Welcome to Rivan
 *"There's no better teacher than experience"*
@@ -16,8 +16,8 @@
 ~~~
 @cmd
 cd Desktop
-mkdir _name-#$34T#
-cd _name-#$34T#
+mkdir _name-42
+cd _name-42
 dir
 ~~~
 
@@ -78,7 +78,7 @@ On-Prem Devices vs RSTHayup Labs (3-tier Enterprise)
 ~~~
 !@CoreTAAS
 conf t
- hostname CoreTAAS-#$34T#
+ hostname CoreTAAS-42
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -92,7 +92,7 @@ conf t
   login
   exec-timeout 0 0
  int vlan 1
-  ip add 10.#$34T#.1.2 255.255.255.0
+  ip add 10.42.1.2 255.255.255.0
   no shut
   end
 ~~~
@@ -100,7 +100,7 @@ conf t
 ~~~
 !@CoreBABA
 conf t
- hostname CoreBABA-#$34T#
+ hostname CoreBABA-42
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -114,7 +114,7 @@ conf t
   login
   exec-timeout 0 0
  int vlan 1
-  ip add 10.#$34T#.1.4 255.255.255.0
+  ip add 10.42.1.4 255.255.255.0
   no shut
   end
 ~~~
@@ -129,16 +129,16 @@ conf t
 
 ~~~
 !@cmd
-ping 10.#$34T#.1.2
-ping 10.#$34T#.1.4
+ping 10.42.1.2
+ping 10.42.1.4
 
-nmap -v 10.#$34T#.1.2
-nmap -v 10.#$34T#.1.4
+nmap -v 10.42.1.2
+nmap -v 10.42.1.4
 ~~~
 
 Telnet the following
-- 10.#$34T#.1.2
-- 10.#$34T#.1.4
+- 10.42.1.2
+- 10.42.1.4
 
 
 <br>
@@ -1180,17 +1180,17 @@ conf t
 conf t
  int vlan 10
   description WIFIVLAN
-  ip add 10.#$34T#.10.2 255.255.255.0
+  ip add 10.42.10.2 255.255.255.0
   no shut
   exit
  int vlan 50
   description CCTVVLAN
-  ip add 10.#$34T#.50.2 255.255.255.0
+  ip add 10.42.50.2 255.255.255.0
   no shut
   exit
  int vlan 100
   description VOICEVLAN
-  ip add 10.#$34T#.100.2 255.255.255.0
+  ip add 10.42.100.2 255.255.255.0
   no shut
   end
 ~~~
@@ -1200,17 +1200,17 @@ conf t
 conf t
  int vlan 10
   description WIFIVLAN
-  ip add 10.#$34T#.10.4 255.255.255.0
+  ip add 10.42.10.4 255.255.255.0
   no shut
   exit
  int vlan 50
   description CCTVVLAN
-  ip add 10.#$34T#.50.4 255.255.255.0
+  ip add 10.42.50.4 255.255.255.0
   no shut
   exit
  int vlan 100
   description VOICEVLAN
-  ip add 10.#$34T#.100.4 255.255.255.0
+  ip add 10.42.100.4 255.255.255.0
   no shut
   end
 ~~~
@@ -1263,32 +1263,32 @@ conf t
 ~~~
 !@CoreTAAS
 conf t
- ip dhcp excluded-address 10.#$34T#.1.1 10.#$34T#.1.100
- ip dhcp excluded-address 10.#$34T#.10.1 10.#$34T#.10.100
- ip dhcp excluded-address 10.#$34T#.50.1 10.#$34T#.50.100
- ip dhcp excluded-address 10.#$34T#.100.1 10.#$34T#.100.100
+ ip dhcp excluded-address 10.42.1.1 10.42.1.100
+ ip dhcp excluded-address 10.42.10.1 10.42.10.100
+ ip dhcp excluded-address 10.42.50.1 10.42.50.100
+ ip dhcp excluded-address 10.42.100.1 10.42.100.100
  ip dhcp pool POOLDATA
-  network 10.#$34T#.1.0 255.255.255.0
-  default-router 10.#$34T#.1.4
+  network 10.42.1.0 255.255.255.0
+  default-router 10.42.1.4
   domain-name MGMTDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.42.1.10
  ip dhcp pool POOLWIFI
-  network 10.#$34T#.10.0 255.255.255.0
-  default-router 10.#$34T#.10.4
+  network 10.42.10.0 255.255.255.0
+  default-router 10.42.10.4
   domain-name WIFIDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 43 ip 10.#$34T#.10.#$34T#
+  dns-server 10.42.1.10
+  option 43 ip 10.42.10.42
  ip dhcp pool POOLCCTV
-  network 10.#$34T#.50.0 255.255.255.0
-  default-router 10.#$34T#.50.4
+  network 10.42.50.0 255.255.255.0
+  default-router 10.42.50.4
   domain-name CCTVDATA.COM
-  dns-server 10.#$34T#.1.10
+  dns-server 10.42.1.10
  ip dhcp pool POOLVOICE
-  network 10.#$34T#.100.0 255.255.255.0
-  default-router 10.#$34T#.100.4
+  network 10.42.100.0 255.255.255.0
+  default-router 10.42.100.4
   domain-name VOICEDATA.COM
-  dns-server 10.#$34T#.1.10
-  option 150 ip 10.#$34T#.100.8
+  dns-server 10.42.1.10
+  option 150 ip 10.42.100.8
   end
 ~~~
 
@@ -1477,10 +1477,10 @@ conf t
 conf t
  ip routing
  ip dhcp pool CAMERA6
-  host 10.#$34T#.50.6 255.255.255.0
+  host 10.42.50.6 255.255.255.0
   client-identifier #camera6macadd#
  ip dhcp pool CAMERA8
-  host 10.#$34T#.50.8 255.255.255.0
+  host 10.42.50.8 255.255.255.0
   client-identifier #camera8macadd#
  end
 ~~~
@@ -1598,7 +1598,7 @@ conf t
 ~~~
 !@CUCM
 conf t
- hostname CUCM-#$34T#
+ hostname CUCM-42
  enable secret pass
  service password-encryption
  no ip domain lookup
@@ -1612,7 +1612,7 @@ conf t
   login
   exec-timeout 0 0
  int fa0/0
-  ip add 10.#$34T#.100.8 255.255.255.0
+  ip add 10.42.100.8 255.255.255.0
   no shut
   end
 ~~~
@@ -1630,16 +1630,16 @@ conf t
 !@CUCM
 conf t
  dial-peer voice 1 pots
-  destination-pattern #$34T#00
+  destination-pattern 4200
   port 0/0/0
  dial-peer voice 2 pots
-  destination-pattern #$34T#01
+  destination-pattern 4201
   port 0/0/1
  dial-peer voice 3 pots
-  destination-pattern #$34T#02
+  destination-pattern 4202
   port 0/0/2
  dial-peer voice 4 pots
-  destination-pattern #$34T#03
+  destination-pattern 4203
   port 0/0/3
  end
 ~~~
@@ -1654,7 +1654,7 @@ conf t
   cptone PH  / US
  end
 !
-csim start #$34T#00
+csim start 4200
 ~~~
 
 
@@ -1686,24 +1686,24 @@ conf t
   no auto-reg-ephone
   max-ephones 5
   max-dn 20
-  ip source-address 10.#$34T#.100.8 port 2000
+  ip source-address 10.42.100.8 port 2000
   create cnf-files
  ephone-dn 1
-  number #$34T#11
+  number 4211
  ephone-dn 2
-  number #$34T#22
+  number 4222
  ephone-dn 3
-  number #$34T#33
+  number 4233
  ephone-dn 4
-  number #$34T#44
+  number 4244
  ephone-dn 5
-  number #$34T#55
+  number 4255
  ephone-dn 6
-  number #$34T#66
+  number 4266
  ephone-dn 7
-  number #$34T#77
+  number 4277
  ephone-dn 8
-  number #$34T#88
+  number 4288
  ephone 1
   mac-address #ephone1macadd#
   type 8945
@@ -1844,7 +1844,7 @@ conf t
   destination-pattern 92..
   session target ipv4:10.92.100.8
   codec g711ULAW
- no dial-peer voice #$34T# Voip
+ no dial-peer voice 42 Voip
  end
 ~~~
 
@@ -1861,7 +1861,7 @@ conf t
 
 ~~~
 !@cmd
-ping 10.#$34T#.100.8
+ping 10.42.100.8
 ~~~
 
 
@@ -1879,7 +1879,7 @@ ping 10.#$34T#.100.8
 ~~~
 !@EDGE
 conf t
- hostname EDGE-#$34T#
+ hostname EDGE-42
  enable secret pass
  service password-encryption
  no logging console
@@ -1894,14 +1894,14 @@ conf t
   exec-timeout 0 0
  int gi 0/0/0
   no shut
-  ip add 10.#$34T#.#$34T#.1 255.255.255.0
+  ip add 10.42.42.1 255.255.255.0
   desc INSIDE
  int gi 0/0/1
   no shut
-  ip add 200.0.0.#$34T# 255.255.255.0
+  ip add 200.0.0.42 255.255.255.0
   desc OUTSIDE
  int loopback 0
-  ip add #$34T#.0.0.1 255.255.255.255
+  ip add 42.0.0.1 255.255.255.255
   desc VIRTUALIP
  end
 ~~~
@@ -1916,7 +1916,7 @@ conf t
 conf t
  int g0/1
   no switchport
-  ip add 10.#$34T#.#$34T#.4 255.255.255.0
+  ip add 10.42.42.4 255.255.255.0
   no shut
   end
 ~~~
@@ -1937,9 +1937,9 @@ conf t
  ip routing
  !
  router ospf 1
-  router-id #$34T#.0.0.1
-  network #$34T#.0.0.1 0.0.0.0 area 0
-  network 10.#$34T#.#$34T#.0 0.0.0.255 area 0
+  router-id 42.0.0.1
+  network 42.0.0.1 0.0.0.0 area 0
+  network 10.42.42.0 0.0.0.255 area 0
   network 200.0.0.0 0.0.0.255 area 0
  int gi 0/0/0
   ip ospf network point-to-point
@@ -1950,8 +1950,8 @@ conf t
 !@CoreBABA
 conf t
  router ospf 1
-  router-id 10.#$34T#.#$34T#.4
-   network 10.#$34T#.0.0 0.0.255.255 area 0
+  router-id 10.42.42.4
+   network 10.42.0.0 0.0.255.255 area 0
  int gi 0/1
   ip ospf network point-to-point
   end
@@ -1961,8 +1961,8 @@ conf t
 !@CUCM
 conf t
  router ospf 1
-  router-id 10.#$34T#.100.8
-  network 10.#$34T#.100.0 0.0.0.255 area 0
+  router-id 10.42.100.8
+  network 10.42.100.0 0.0.0.255 area 0
   end
 ~~~
 
@@ -2037,10 +2037,10 @@ conf t
 ~~~
 !@CoreTAAS
 config t
- hostname CoreTAAS-#$34T#-(PLDT)
+ hostname CoreTAAS-42-(PLDT)
  Track 1 Int gi 0/1 line-protocol
  int vlan 1
-  standby 1 ip 10.#$34T#.1.16
+  standby 1 ip 10.42.1.16
   standby 1 preempt
   standby 1 Priority 150
   standby 1 Track 1 decrement 60
@@ -2064,9 +2064,9 @@ conf t
 ~~~
 !@CoreBABA
 config t
- hostname CoreBABA-#$34T#-(GLOBE)
+ hostname CoreBABA-42-(GLOBE)
  Int vlan 1
-  standby 1 ip 10.#$34T#.1.16
+  standby 1 ip 10.42.1.16
   standby 1 preempt
   standby 1 Priority 100
   end
@@ -2086,8 +2086,8 @@ config t
 conf t
  no router ospf 1
  router ospf 1
-  router-id #$34T#.0.0.1
-  network 10.#$34T#.#$34T#.0 0.0.0.255 area 0
+  router-id 42.0.0.1
+  network 10.42.42.0 0.0.0.255 area 0
   default-information originate always
   end
 ~~~
@@ -2096,7 +2096,7 @@ conf t
 !@EDGE
 conf t
  int tun1
-  ip add 172.16.1.#$34T# 255.255.255.0
+  ip add 172.16.1.42 255.255.255.0
   tunnel source g0/0/1
   tunnel mode gre multipoint
   no shut
@@ -2122,30 +2122,30 @@ conf t
   ip nhrp map 172.16.1.82 200.0.0.82
   ip nhrp map 172.16.1.91 200.0.0.91
   ip nhrp map 172.16.1.92 200.0.0.92
-  no ip nhrp map 172.16.1.#$34T# 200.0.0.#$34T#
+  no ip nhrp map 172.16.1.42 200.0.0.42
   exit
   !
  no ip access-list extended NAT-POLICY
  ip access-list extended NAT-POLICY
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.11.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.12.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.21.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.22.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.31.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.32.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.41.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.42.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.51.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.52.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.61.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.62.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.71.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.72.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.81.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.82.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.91.0.0 0.0.255.255
-  deny ip 10.#$34T#.0.0 0.0.255.255 10.92.0.0 0.0.255.255
-  no deny ip 10.#$34T#.0.0 0.0.255.255 10.#$34T#.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.11.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.12.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.21.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.22.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.31.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.32.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.41.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.42.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.51.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.52.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.61.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.62.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.71.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.72.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.81.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.82.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.91.0.0 0.0.255.255
+  deny ip 10.42.0.0 0.0.255.255 10.92.0.0 0.0.255.255
+  no deny ip 10.42.0.0 0.0.255.255 10.42.0.0 0.0.255.255
   permit ip any any
   exit
  !
@@ -2168,7 +2168,7 @@ conf t
  ip route 10.91.0.0 255.255.0.0 172.16.1.91 252
  ip route 10.92.0.0 255.255.0.0 172.16.1.92 252
  !
- no ip route 10.#$34T#.0.0 255.255.0.0 172.16.1.#$34T# 252
+ no ip route 10.42.0.0 255.255.0.0 172.16.1.42 252
  end
 ~~~ 
 
@@ -2192,12 +2192,12 @@ conf t
   ip tcp adjust-mss 1360
  no router ospf 1
  router ospf 1
-  router-id #$34T#.0.0.1
-  network 10.#$34T#.#$34T#.0 0.0.0.255 area 0
+  router-id 42.0.0.1
+  network 10.42.42.0 0.0.0.255 area 0
   default-information originate always
  router eigrp 100
   no auto-summary
-  router-id 200.0.0.#$34T#
+  router-id 200.0.0.42
   network 200.0.0.0 0.0.0.255
   network 172.16.1.0 0.0.0.255
   end
@@ -3384,7 +3384,7 @@ Send Configurations
 import cli
 
 commands = '''
-hostname UTM-PH-#$34T#
+hostname UTM-PH-42
 '''
 
 cli.configurep(commands)
@@ -3497,7 +3497,7 @@ list_of_device = list_of_device.split()
 ### Device Information
 device_info = {
     'device_type': 'cisco_ios_telnet',
-    'host': '10.#$34T#.1.2',
+    'host': '10.42.1.2',
     'username': 'admin',
     'password': 'pass',
     'secret': 'pass',
@@ -3729,7 +3729,7 @@ def get_configs(user_m, add_dn=''):
 def config_devices(user_m, add_dn='', terminal=False):
     device_info = {
         'device_type': 'cisco_ios_telnet',
-        'host': f'10.#$34T#.100.8',
+        'host': f'10.42.100.8',
         'username': 'admin',
         'password': 'pass',
         'secret': 'pass'
@@ -3789,7 +3789,7 @@ if __name__ == '__main__':
 
 ## EEM
 ~~~
-!@UTM-PH-#$34T#
+!@UTM-PH-42
 conf t
  int loop 0
   ip add 1.0.0.1 255.255.255.255
@@ -3803,7 +3803,7 @@ conf t
 Duplicate Session, Terminal Monitoring
 
 ~~~
-!@UTM-PH-#$34T#
+!@UTM-PH-42
 config t
 no event manager applet WatchLo0
 event manager applet WatchLo0
@@ -3821,7 +3821,7 @@ event manager run WatchLo0
 
 ### 2. Send basic command (loop 14 & 15)
 ~~~
-!@UTM-PH-#$34T#
+!@UTM-PH-42
 config t
 no event manager applet addloop
 event manager applet addloop
@@ -3847,7 +3847,7 @@ event manager run addloop
 
 ### 3. Generate Loopbacks
 ~~~
-!@UTM-PH-#$34T#
+!@UTM-PH-42
 config t
 no event manager applet createloop
 event manager applet createloop
@@ -3874,7 +3874,7 @@ event manager run createloop
 
 ### 4. Delete Loopbacks
 ~~~
-!@UTM-PH-#$34T#
+!@UTM-PH-42
 config t
 no event manager applet removeloop
 event manager applet removeloop
@@ -3898,7 +3898,7 @@ event manager run removeloop
 
 ### 5. How to get your boss fired
 ~~~
-!@UTM-PH-#$34T#
+!@UTM-PH-42
 config t
 no event manager applet byebye
 event manager applet byebye
@@ -3955,22 +3955,22 @@ type ethernet \
 con-name BRIDGED \
 ifname ens256 \
 ipv4.method manual \
-ipv4.addresses 10.#$34T#.1.6/24 \
+ipv4.addresses 10.42.1.6/24 \
 autoconnect yes
 
 nmcli connection up BRIDGED
 
-route add 10.0.0.0/8 via 10.#$34T#.1.4
-route add 200.0.0.0/24 via 10.#$34T#.1.4
+route add 10.0.0.0/8 via 10.42.1.4
+route add 200.0.0.0/24 via 10.42.1.4
 ~~~
 
 <br>
 
 ~~~
 !@NetOps
-ifconfig ens256 10.#$34T#.1.6 netmask 255.255.255.0 up
-route add 10.0.0.0/8 via 10.#$34T#.1.4
-route add 200.0.0.0/24 via 10.#$34T#.1.4
+ifconfig ens256 10.42.1.6 netmask 255.255.255.0 up
+route add 10.0.0.0/8 via 10.42.1.4
+route add 200.0.0.0/24 via 10.42.1.4
 ~~~
 
 
@@ -4139,8 +4139,8 @@ __Playbook (add_loop.yml)__
 __hosts (Inventory)__
 ~~~
 [realdevices]
-ctaas ansible_host=10.#$34T#.1.2 ansible_user=admin ansible_password=pass
-cbaba ansible_host=10.#$34T#.1.4 ansible_user=rivan ansible_password=C1sc0123
+ctaas ansible_host=10.42.1.2 ansible_user=admin ansible_password=pass
+cbaba ansible_host=10.42.1.4 ansible_user=rivan ansible_password=C1sc0123
 
 [realdevices:vars]
 ansible_connection=network_cli
@@ -4227,10 +4227,10 @@ nano real_devices.ini
 
 ~~~
 [real_cisco]
-CTAAS ansible_host=10.#$34T#.1.2
-CBABA ansible_host=10.#$34T#.1.4
-CUCM ansible_host=10.#$34T#.100.8
-EDGE ansible_host=10.#$34T#.#$34T#.1
+CTAAS ansible_host=10.42.1.2
+CBABA ansible_host=10.42.1.4
+CUCM ansible_host=10.42.100.8
+EDGE ansible_host=10.42.42.1
 UTM-PH ansible_host=11.11.11.113
 
 [real_cisco:vars]
@@ -4344,12 +4344,12 @@ nano group_vars/real_cisco.yml
 interfaces:
   - name: Loopback1
     desc: Made via Ansible
-    ip: #$34T#.0.1.1
+    ip: 42.0.1.1
     mask: 255.255.255.255
 
   - name: Loopback2
     desc: Made via Ansible
-    ip: #$34T#.0.2.1
+    ip: 42.0.2.1
     mask: 255.255.255.255
 ~~~
 
@@ -4368,12 +4368,12 @@ nano host_vars/CBABA.yml
 interfaces:
   - name: Loopback1
     desc: Made via Ansible
-    ip: #$34T#.0.1.4
+    ip: 42.0.1.4
     mask: 255.255.255.255
 
   - name: Loopback2
     desc: Made via Ansible
-    ip: #$34T#.0.2.4
+    ip: 42.0.2.4
     mask: 255.255.255.255
 ~~~
 
@@ -4391,12 +4391,12 @@ nano host_vars/CTAAS.yml
 interfaces:
   - name: Loopback1
     desc: Made via Ansible
-    ip: #$34T#.0.1.2
+    ip: 42.0.1.2
     mask: 255.255.255.255
 
   - name: Loopback2
     desc: Made via Ansible
-    ip: #$34T#.0.2.2
+    ip: 42.0.2.2
     mask: 255.255.255.255
 ~~~
 
@@ -4493,7 +4493,7 @@ ansible_project/playbooks/deploy_dhcp.yml
 Enable RESTCONF
 
 ~~~
-!@UTM-PH-#$34T#
+!@UTM-PH-42
 conf t
  username admin privilege 15 secret pass
  ip http secure-server
@@ -4531,7 +4531,7 @@ resource "iosxe_interface_loopback" "example" {
   name               = 3
   description        = "My First TF Script Attempt"
   shutdown           = false
-  ipv4_address       = "#$34T#.0.3.1"
+  ipv4_address       = "42.0.3.1"
   ipv4_address_mask  = "255.255.255.255"
 }
 ~~~
@@ -4605,7 +4605,7 @@ type cisco_ios_interfaceurl file:////etc/puppetlabs/puppet/devices/rivan.com.con
 
 __Credentials__
 ~~~
-host: "10.#$34T#.1.4"
+host: "10.42.1.4"
 port: 22
 user: admin
 password: password
